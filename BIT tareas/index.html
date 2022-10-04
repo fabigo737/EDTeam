@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de logica</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            background-image: url("https://wallpaperaccess.com/full/6231389.jpg");
+            background-size: 50%;
+        }
+
+        .blur-fab {
+            backdrop-filter: blur(3px);
+        }
+
+        .quitarestilos {
+            list-style: none;
+        }
+
+        .colornegro{
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="colornegro vh-100">
+        <p class="text-center text-white bg-dark py-3">1. Se necesitan sumar los números del 1 a n, donde n es un número que le pedimos
+            al usuario.<br>
+            2. Se necesita validar si un número ingresado por el usuario es par o impar.</p>
+    <div class="mt-5 container-md bg-light bg-gradient text-center blur-fab shadow-lg py-5 border rounded border border-5 border-dark">
+        <h1 class="text-center mb-5">Ejercicios de logica</h1>
+        <div id="numerosuser" class="text-center d-flex flex-column">
+            <form class="row justify-content-center">
+                <div class="col-auto">
+                    <label for="numerodeusuario" class="">Ingrese un numero hasta el 100</label>
+                    <input type="number" min="1" max="100" class="form-control" id="numerodeusuario"
+                        placeholder="Ingrese un numero">
+                </div>
+                <div class="col-auto mt-4">
+                    <button type="button" onclick="ejecutarsuma()" class="btn btn-primary mb-3">Calcular
+                        suma</button>
+                </div>
+            </form>
+            <span class="mt-5" id="resultadofinalfinal"></span>
+            <span class="mb-5 mt-3" id="parimpar"></span>
+            <p class="mt-5">El resultado se sumara en bucle hasta llegar al numero deseado. <br>Ej: si introduce 3. La
+                ejecucion será:<br> 1+1=<a style="color:orange">2</a> <br><a style="color:orange">2</a>+2=<a
+                    style="color:blue">4</a> <br><a style="color:blue">4</a>+3=7 <br>(Ahí terminará el bucle)</p>
+            <p>Creado por Fabian De Gouveia</p>
+            <p>Usado:</p>
+            <p>
+            <ul class="quitarestilos">
+                <li>HTML</li>
+                <li>Bootstrap</li>
+                <li>Javascript</li>
+                <li>CSS</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+<script src="main.js"></script>
+
+</html>
