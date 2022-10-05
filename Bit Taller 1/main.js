@@ -20,3 +20,5 @@ function fillNotes(nota) {
     document.querySelector('.inputnote').value = ''
 }
 
+
+
