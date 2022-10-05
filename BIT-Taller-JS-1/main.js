@@ -4,19 +4,18 @@ tablaUsuarios = document.querySelector('.resultado-personas')
 // también el nombre y la edad de la persona menor
 
 
-function mostarUsuariosDOM() {
-    for (let index = 0; index < listaClientes.length; index++) {
-        const element = listaClientes[index];
-        let max = Math.max(element.edad)
-        let min = Math.min(element.edad)
-        tablaUsuarios.innerHTML += `
-        <td>${max}</td>
-        <td>${min}</td>
+// function mostarUsuariosDOM() {
+//     for (let i = 0; i < listaClientes.length; i++) {
+//         const edades = listaClientes[i].edad;
+//         console.log(edades);
+//     }
+// }
 
-        `
+// mostarUsuariosDOM()
 
-        console.log(element)
-    }
-}
 
-mostarUsuariosDOM()
+let edades = listaClientes.map(function(edad){
+    return edad.age
+})
+console.log(Math.max(...edades))
+console.log(Math.min(...edades))
