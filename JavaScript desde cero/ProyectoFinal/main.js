@@ -1,15 +1,26 @@
 tablaUsuarios = document.querySelector('#listadeusuarios')
 
+
+
 function mostarUsuariosDOM() {
     for (let index = 0; index < listaClientes.length; index++) {
         const element = listaClientes[index];
         let finalUser = element
+        let premio 
+        if (element.edad >= 18) {
+            premio = 'Cerveza'
+        } else if(element.edad <= 10){
+            premio ='Zumo'
+        }else {
+            premio = null
+        }
         listadeusuarios.innerHTML += `
         <tr>
-            <td>${element.nombre}</td>
-        </tr>
-        <tr>
+        <td>${element.nombre}</td>
         <td>${element.apellido}</td>
+        <td>${element.edad}</td>
+        <td>${element.genero}</td>
+        <td>${premio}</td>
         </tr>
         `
 
