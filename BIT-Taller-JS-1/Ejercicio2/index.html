@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luna</title>
+    <title>Ejercicio 2</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -16,15 +16,24 @@
 </head>
 
 <body class="bg-secondary vh-100 align-items-center d-flex justify-content-center">
-    <div class="bg-light col-5 py-5 px-5 rounded shadow-lg border border-dark text-center">
+    <div class="bg-light col-4 py-5 px-5 rounded shadow-lg border border-dark text-center">
         <div class="input-group mb-3">
             <span class="input-group-text">Ingrese la nota</span>
-            <input type="number" class="form-control" id="notamanual" required onkeypress="notas(event)">
+            <input type="number" class="form-control" id="notamanual" required onkeypress="calcularVenta(event)">
         </div>
+        <hr>
         <div class="mostrarresultados">
             <div class="input-group mb-3">
-                <span class="input-group-text">= a Cero</span>
-                <input type="text" disabled class="form-control" id="notamanual" required onkeypress="notas(event)">
+                <span class="input-group-text">Menor a Cero</span>
+                <input type="text" disabled class="form-control" id="resultadomenor0">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Igual a Cero</span>
+                <input type="text" disabled class="form-control" id="resultadoigual0">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Mayor a Cero</span>
+                <input type="text" disabled class="form-control" id="resultadomayor0">
             </div>
         </div>
         <div class="mostarlista"></div>

@@ -9,12 +9,17 @@ function notas(e){
     if (e.key == 'Enter'){
     if (entradaUsuario.value == 0) {
         neutro = neutro+1
+        document.querySelector('#resultadoigual0').value = neutro
     }
     if (entradaUsuario.value >0){
         positivo = positivo+1
+        document.querySelector('#resultadomayor0').value = positivo
     }
     if (entradaUsuario.value < 0){
         negativo = negativo+1
+        document.querySelector('#resultadomenor0').value = negativo
     }
+    document.querySelector('.mostarlista').innerHTML += ` ${entradaUsuario.value} |`
 }
 }
+
