@@ -14,13 +14,19 @@ let printVagon2 = document.querySelector('#vagon2 table tbody')
 const arreglo = []
 
 function subirPasajero(){
-    if (vagon1 <= 1) {
+    if (vagon1 <= 4) {
         vagon1 = vagon1+1
         let usuarios = {name: nombreUsuarioIn.value, cedula: cedulaUsuarioIn.value, vagon: 1}
         arreglo.push(usuarios)
-        console.log(arreglo)
-        printVagon1.innerHTML += `<tr><td>${cedulaUsuarioIn.value}</td><td>${nombreUsuarioIn.value}</td></tr>`
-    }else if (vagon2 <=1){
+        for (let index = 0; index < arreglo.length; index++) {
+            const element = arreglo[index];
+            if(element.vagon == '1'){
+                printVagon1.innerHTML += `<tr><td>${arreglo.cedula}</td></tr>`
+                console.log(arreglo)
+                
+            }
+        }
+        }else if (vagon2 <=1){
         vagon2 = vagon2+1
         printVagon2.innerHTML += `<tr><td>${cedulaUsuarioIn.value}</td><td>${nombreUsuarioIn.value}</td></tr>`
     }
