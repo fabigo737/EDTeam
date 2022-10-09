@@ -14,84 +14,80 @@ const printVagon2 = document.querySelector('#vagon2 table tbody')
 let selecionVagon = document.querySelector('.form-select')
 const arreglo = []
 
-function subirPasajero(){
-    
+function subirPasajero(){    
     let usuarios = {name: nombreUsuarioIn.value, cedula: cedulaUsuarioIn.value, vagon: selecionVagon.value}
     arreglo.push(usuarios)
     printVagon1.innerHTML = ''
     printVagon2.innerHTML = ''
+// Esta Parte cambia el valor de la variable a ver si esta lleno o no el vagon
+    if (selecionVagon.value == 1){
+        vagon1 = vagon1+1
+    }
+    if (selecionVagon.value == 2){
+        vagon2 = vagon2+1
+    }
+// Esta parte imprime en lista las personas segun el vagon que estan
     arreglo.forEach((usuario)=>{
         if (usuario.vagon == 1) {
             printVagon1.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
-            vagon1 = vagon1+1
         }
         if (usuario.vagon == 2) {
             printVagon2.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
-            vagon2 = vagon2+1
         }
+    nombreUsuarioIn.value = ''
+    cedulaUsuarioIn.value = ''
+    selecionVagon.value = 0
+    document.querySelector('#nombreUsuarioIn').focus()       
 
-        nombreUsuarioIn.value = ''
-        cedulaUsuarioIn.value = ''
-        selecionVagon.value = 0
-    document.querySelector('#nombreUsuarioIn').focus()
-
-        
-    }
-
-    )
-
-
-  /**  
-    let usuarios = {name: nombreUsuarioIn.value, cedula: cedulaUsuarioIn.value, vagon: selecionVagon.value}
-    arreglo.push(usuarios)
-    arreglo.forEach((usuario)=>{
-        if (selecionVagon.value == 1) {
-            printVagon2.innerHTML = ''
-            vagon1 = vagon1+1
-            printVagon1.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
-        }
-        if (selecionVagon.value == 2) {
-            printVagon2.innerHTML = ''
-            vagon2 = vagon2+1
-            printVagon2.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
-        }
     })
-        nombreUsuarioIn.value = ''
-        cedulaUsuarioIn.value = ''
-        selecionVagon.value = 0
-    document.querySelector('#nombreUsuarioIn').focus()
-    */
+console.log(vagon1)
+    progress()
 }
-/** 
+
 function bajarPasajero() {
-    function clearList() {printVagon1.innerHTML = ''} clearList()
+    
     const indexarreglo = arreglo.map(e => e.cedula).indexOf(cedulaUsuarioIn.value);
     const indexarreglovagon = arreglo.map(e => e.vagon)
-    if (indexarreglo >-1 && indexarreglovagon == 1) {
-        arreglo.splice(indexarreglo, 1)
-        vagon1 = vagon1-1
-    }
+    printVagon1.innerHTML = ''
+    printVagon2.innerHTML = ''
+    console.log(indexarreglovagon);
+
     arreglo.forEach((usuario)=>{
-        printVagon1.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
+        if (usuario.vagon == 1) {
+            if (indexarreglo >-1) {
+                arreglo.splice(indexarreglo, 1)
+                vagon1 = vagon1-1
+            }
+        }
     })
-    // else if(indexarreglo >-1 && indexarreglovagon == 2){
-        //         arreglo.splice(indexarreglo, 1)
-        //         vagon2 = vagon2-1
-        //     }
-        console.log(arreglo)
+
+    arreglo.forEach((usuario)=>{
+        if (usuario.vagon == 1) {
+            printVagon1.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
+        }
+        if (usuario.vagon == 2) {
+            printVagon2.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
+        }})
         progress()
     }
+
     
     function progress() {
     let vagon1cap = vagon1*10
-    const barraprogreso = document.querySelector('.progress-bar')
-    if (vagon1cap >=25 && vagon1cap <50){ barraprogreso.classList.add('bg-success');}
-    if (vagon1cap >=50 && vagon1cap <75){ barraprogreso.classList.add('bg-info');}
-    if (vagon1cap >=75 && vagon1cap <95){ barraprogreso.classList.add('bg-warning');}
-    if (vagon1cap >=95){ barraprogreso.classList.add('bg-danger');}
-    barraprogreso.style= `width: ${vagon1cap}%`
-    barraprogreso.innerHTML = `${vagon1cap}%`
-    console.log(vagon1)
-}
+    let vagon2cap = vagon2*10
+    const barraprogreso1 = document.querySelector('.vagon1p')
+    if (vagon1cap >=25 && vagon1cap <50){ barraprogreso1.classList.add('bg-success');}
+    if (vagon1cap >=50 && vagon1cap <75){ barraprogreso1.classList.add('bg-info');}
+    if (vagon1cap >=75 && vagon1cap <95){ barraprogreso1.classList.add('bg-warning');}
+    if (vagon1cap >=95){ barraprogreso1.classList.add('bg-danger');}
+    barraprogreso1.style= `width: ${vagon1cap}%`
+    barraprogreso1.innerHTML = `${vagon1cap}%`
 
-*/
+    const barraprogreso2 = document.querySelector('.vagon2p')
+    if (vagon2cap >=25 && vagon2cap <50){ barraprogreso2.classList.add('bg-success');}
+    if (vagon2cap >=50 && vagon2cap <75){ barraprogreso2.classList.add('bg-info');}
+    if (vagon2cap >=75 && vagon2cap <95){ barraprogreso2.classList.add('bg-warning');}
+    if (vagon2cap >=95){ barraprogreso2.classList.add('bg-danger');}
+    barraprogreso2.style= `width: ${vagon2cap}%`
+    barraprogreso2.innerHTML = `${vagon2cap}%`
+}
