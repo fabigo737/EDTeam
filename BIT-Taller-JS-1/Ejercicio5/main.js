@@ -15,27 +15,54 @@ let selecionVagon = document.querySelector('.form-select')
 const arreglo = []
 
 function subirPasajero(){
+    
     let usuarios = {name: nombreUsuarioIn.value, cedula: cedulaUsuarioIn.value, vagon: selecionVagon.value}
+    arreglo.push(usuarios)
     printVagon1.innerHTML = ''
     printVagon2.innerHTML = ''
-    arreglo.push(usuarios)
     arreglo.forEach((usuario)=>{
-        if (selecionVagon.value == 1) {
-            vagon1 = vagon1+1
+        if (usuario.vagon == 1) {
             printVagon1.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
+            vagon1 = vagon1+1
         }
-        if (selecionVagon.value == 2) {
-            vagon2 = vagon2+1
+        if (usuario.vagon == 2) {
             printVagon2.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
+            vagon2 = vagon2+1
         }
-    })
-        progress()
+
         nombreUsuarioIn.value = ''
         cedulaUsuarioIn.value = ''
         selecionVagon.value = 0
     document.querySelector('#nombreUsuarioIn').focus()
-    
+
+        
+    }
+
+    )
+
+
+  /**  
+    let usuarios = {name: nombreUsuarioIn.value, cedula: cedulaUsuarioIn.value, vagon: selecionVagon.value}
+    arreglo.push(usuarios)
+    arreglo.forEach((usuario)=>{
+        if (selecionVagon.value == 1) {
+            printVagon2.innerHTML = ''
+            vagon1 = vagon1+1
+            printVagon1.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
+        }
+        if (selecionVagon.value == 2) {
+            printVagon2.innerHTML = ''
+            vagon2 = vagon2+1
+            printVagon2.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
+        }
+    })
+        nombreUsuarioIn.value = ''
+        cedulaUsuarioIn.value = ''
+        selecionVagon.value = 0
+    document.querySelector('#nombreUsuarioIn').focus()
+    */
 }
+/** 
 function bajarPasajero() {
     function clearList() {printVagon1.innerHTML = ''} clearList()
     const indexarreglo = arreglo.map(e => e.cedula).indexOf(cedulaUsuarioIn.value);
@@ -67,3 +94,4 @@ function bajarPasajero() {
     console.log(vagon1)
 }
 
+*/
