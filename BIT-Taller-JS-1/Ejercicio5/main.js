@@ -101,3 +101,35 @@ barraprogreso2.style= `width: ${vagon2*10}%`
 barraprogreso2.innerHTML = `${vagon2*10}%`
 }
 
+const arraytest = [
+    {
+        nombre: 'Fabian',
+        apellido: 'De Gouveia',
+        age: 26,
+        genero: 'Masculino'
+    },
+    {
+        nombre: 'Wildys',
+        apellido: 'Lomelly',
+        age: 24,
+        genero: 'Femenino'
+    }
+]
+
+
+
+
+function findpasajero() {
+
+    const usuarioindex = arraytest.map(x => x.cedula).indexOf(cedulaUsuarioIn.value)
+    console.log(usuarioindex)
+    const nuevoarrauser = []
+console.log(nuevoarrauser)
+    if (usuarioindex > -1 ){
+        console.log ('El usuario existe')
+        nuevoarrauser.push(arreglo[usuarioindex])
+        console.log(nuevoarrauser)
+    }else {
+        console.log('El usuario no existe');
+    }
+    } 
