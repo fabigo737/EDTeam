@@ -47,25 +47,26 @@ progress()
 // ESTA FUNCION ES PARA BAJAR A LOS PASAJEROS
 
 function bajarPasajero() {
-    console.log(arreglo)
-    console.log('DEPUES DE LA FUNCION')
     arreglo.forEach(usuario=> {
-        if(usuario.vagon == 1){
-            const indexarreglo = arreglo.map(e => e.cedula).indexOf(cedulaUsuarioIn.value)// Busca en indice de la posicion de la cedula en el arr
-            if (indexarreglo > -1) { // only splice array when item is found
+        const indexarreglo = arreglo.map(e => e.cedula).indexOf(cedulaUsuarioIn.value)// Busca en indice de la posicion de la cedula en el arr
+        console.log(typeof(usuario.vagon))
+        if(usuario.cedula == cedulaUsuarioIn.value && usuario.vagon === '1'){
+            if (indexarreglo > -1) { 
                 arreglo.splice(indexarreglo, 1)
-                vagon1 = vagon1-1 // 2nd parameter means remove one item only
+                vagon1 = vagon1-1 
               }
-        }else if(usuario.vagon == 2){
-            const indexarreglo = arreglo.map(e => e.cedula).indexOf(cedulaUsuarioIn.value)// Busca en indice de la posicion de la cedula en el arr
-            if (indexarreglo > -1) { // only splice array when item is found
+        }
+        if(usuario.cedula == cedulaUsuarioIn.value && usuario.vagon === '2'){
+            if (indexarreglo > -1) { 
                 arreglo.splice(indexarreglo, 1)
-                vagon2 = vagon2-1 // 2nd parameter means remove one item only
+                vagon2 = vagon2-1 
               }
         }
         printVagon1.innerHTML = ''
         printVagon2.innerHTML = ''
     })
+
+
     // ESTA FUNCION RE IMPRIME LOS USUARIOS DEL ARRARY
     arreglo.forEach((usuario)=>{ 
           if (usuario.vagon == 1) {
@@ -75,38 +76,28 @@ function bajarPasajero() {
               printVagon2.innerHTML += `<tr><td>${usuario.cedula}</td><td>${usuario.name}</td></tr>`
           }})
           progress()
+
+          console.log(`la cantida en vagon 1 es: ${vagon1} - la cantida en vagon 2 es:  ${vagon2}`)
 }
-
-
-
-
 
 
 // ESTA FUNCION LO QUE HACE ES CONTROLAR LAS BARRAS DE PROGRESO
 function progress() {
-let vagon1cap = vagon1*10
-let vagon2cap = vagon2*10
+
 const barraprogreso1 = document.querySelector('.vagon1p')
-if (vagon1cap >=25 && vagon1cap <50){ barraprogreso1.classList.add('bg-success');}
-if (vagon1cap >=50 && vagon1cap <75){ barraprogreso1.classList.add('bg-info');}
-if (vagon1cap >=75 && vagon1cap <95){ barraprogreso1.classList.add('bg-warning');}
-if (vagon1cap >=95){ barraprogreso1.classList.add('bg-danger');}
-barraprogreso1.style= `width: ${vagon1cap}%`
-barraprogreso1.innerHTML = `${vagon1cap}%`
+if (vagon1 >=3 && vagon1 <5){ barraprogreso1.classList.add('bg-success');}
+if (vagon1 >=5 && vagon1 <7){ barraprogreso1.classList.add('bg-info');}
+if (vagon1 >=7 && vagon1 <9){ barraprogreso1.classList.add('bg-warning');}
+if (vagon1 >=9){ barraprogreso1.classList.add('bg-danger');}
+barraprogreso1.style= `width: ${vagon1*10}%`
+barraprogreso1.innerHTML = `${vagon1*10}%`
+
 const barraprogreso2 = document.querySelector('.vagon2p')
-if (vagon2cap >=25 && vagon2cap <50){ barraprogreso2.classList.add('bg-success');}
-if (vagon2cap >=50 && vagon2cap <75){ barraprogreso2.classList.add('bg-info');}
-if (vagon2cap >=75 && vagon2cap <95){ barraprogreso2.classList.add('bg-warning');}
-if (vagon2cap >=95){ barraprogreso2.classList.add('bg-danger');}
-barraprogreso2.style= `width: ${vagon2cap}%`
-barraprogreso2.innerHTML = `${vagon2cap}%`
+if (vagon2 >=3 && vagon2 <5){ barraprogreso2.classList.add('bg-success');}
+if (vagon2 >=5 && vagon2 <7){ barraprogreso2.classList.add('bg-info');}
+if (vagon2 >=7 && vagon2 <9){ barraprogreso2.classList.add('bg-warning');}
+if (vagon2 >=9){ barraprogreso2.classList.add('bg-danger');}
+barraprogreso2.style= `width: ${vagon2*10}%`
+barraprogreso2.innerHTML = `${vagon2*10}%`
 }
-
-
-
-
-
-
-
-var array = [{name: 'ramiro', vagon: 1},{name: 'hola', vagon: 1}, {name: 'hola', vagon: 3}, {name: 'hola', vagon: 3}, {name: 'hola', vagon: 2}]
 
