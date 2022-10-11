@@ -13,19 +13,29 @@ const printVagon1 = document.querySelector('#vagon1 table tbody')
 const printVagon2 = document.querySelector('#vagon2 table tbody')
 let selecionVagon = document.querySelector('.form-select')
 const arreglo = []
+let vagones = 'vagon'+selecionVagon.value
+
 
 function subirPasajero(){    
     let usuarios = {name: nombreUsuarioIn.value, cedula: cedulaUsuarioIn.value, vagon: selecionVagon.value}
-    arreglo.push(usuarios)
+    if (selecionVagon.value == 1) {
+        if(vagon1 <10){
+            arreglo.push(usuarios)
+            vagon1 = vagon1+1
+        }else{
+            alert('Vagon 1 lleno')
+        }
+    }
+    if (selecionVagon.value == 2) {
+        if(vagon2 <10){
+            arreglo.push(usuarios)
+            vagon2 = vagon2+1
+        }else{
+            alert('Vagon 2 lleno')
+        }
+    }
     printVagon1.innerHTML = ''
     printVagon2.innerHTML = ''
-// Esta Parte cambia el valor de la variable a ver si esta lleno o no el vagon
-    if (selecionVagon.value == 1){
-        vagon1 = vagon1+1
-    }
-    if (selecionVagon.value == 2){
-        vagon2 = vagon2+1
-    }
 // Esta parte imprime en lista las personas segun el vagon que estan
     arreglo.forEach((usuario)=>{
         if (usuario.vagon == 1) {
@@ -40,8 +50,6 @@ function subirPasajero(){
     document.querySelector('#nombreUsuarioIn').focus()       
 
     })
-console.log(`En el vagon 1 hay ${vagon1} personas`)
-console.log(arreglo)
 progress()
 }
 // ESTA FUNCION ES PARA BAJAR A LOS PASAJEROS
@@ -49,7 +57,6 @@ progress()
 function bajarPasajero() {
     arreglo.forEach(usuario=> {
         const indexarreglo = arreglo.map(e => e.cedula).indexOf(cedulaUsuarioIn.value)// Busca en indice de la posicion de la cedula en el arr
-        console.log(typeof(usuario.vagon))
         if(usuario.cedula == cedulaUsuarioIn.value && usuario.vagon === '1'){
             if (indexarreglo > -1) { 
                 arreglo.splice(indexarreglo, 1)
@@ -80,10 +87,23 @@ function bajarPasajero() {
           console.log(`la cantida en vagon 1 es: ${vagon1} - la cantida en vagon 2 es:  ${vagon2}`)
 }
 
-
+function findpasajero() {
+    const usuarioindex = arreglo.map(x => x.cedula).indexOf(cedulaUsuarioIn.value)
+    const nuevoarrauser = []
+    if (usuarioindex > -1 ){
+        nuevoarrauser.push(arreglo[usuarioindex])
+        const xx = nuevoarrauser[0]
+        Swal.fire('Pasajero ' + xx.name + ' con cedula ' + xx.cedula + ' esta en el vagon: ' + xx.vagon)
+        arrejemplo.pop()
+    }else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Usuario no existe en el sistema',
+        })
+    }
+} 
 // ESTA FUNCION LO QUE HACE ES CONTROLAR LAS BARRAS DE PROGRESO
 function progress() {
-
 const barraprogreso1 = document.querySelector('.vagon1p')
 if (vagon1 >=3 && vagon1 <5){ barraprogreso1.classList.add('bg-success');}
 if (vagon1 >=5 && vagon1 <7){ barraprogreso1.classList.add('bg-info');}
@@ -100,36 +120,3 @@ if (vagon2 >=9){ barraprogreso2.classList.add('bg-danger');}
 barraprogreso2.style= `width: ${vagon2*10}%`
 barraprogreso2.innerHTML = `${vagon2*10}%`
 }
-
-const arraytest = [
-    {
-        nombre: 'Fabian',
-        apellido: 'De Gouveia',
-        age: 26,
-        genero: 'Masculino'
-    },
-    {
-        nombre: 'Wildys',
-        apellido: 'Lomelly',
-        age: 24,
-        genero: 'Femenino'
-    }
-]
-
-
-
-
-function findpasajero() {
-
-    const usuarioindex = arraytest.map(x => x.cedula).indexOf(cedulaUsuarioIn.value)
-    console.log(usuarioindex)
-    const nuevoarrauser = []
-console.log(nuevoarrauser)
-    if (usuarioindex > -1 ){
-        console.log ('El usuario existe')
-        nuevoarrauser.push(arreglo[usuarioindex])
-        console.log(nuevoarrauser)
-    }else {
-        console.log('El usuario no existe');
-    }
-    } 
